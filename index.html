@@ -36,9 +36,9 @@
             margin-top: 20px;
         }
         .intro-buttons a {
+            position: relative;
             display: inline-block;
-            background: linear-gradient(45deg, #0071E3, #00A1FF);
-            background-size: 200% 200%;
+            background-color: #0071E3;
             color: #FFFFFF;
             border-radius: 980px;
             padding: 10px 20px;
@@ -46,12 +46,22 @@
             font-weight: 400;
             text-decoration: none;
             margin: 0 10px;
+            overflow: hidden;
             transition: transform 0.2s;
-            animation: gradientShift 3s ease infinite;
+        }
+        .intro-buttons a::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -100%;
+            width: 50%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: rotate(45deg);
+            animation: shine 3s ease infinite;
         }
         .intro-buttons a:hover {
             transform: scale(1.1);
-            animation: gradientShiftHover 3s ease infinite;
         }
         .items {
             display: flex;
@@ -72,8 +82,8 @@
             margin: 10px 0;
         }
         .item input[type="submit"] {
-            background: linear-gradient(45deg, #0071E3, #00A1FF);
-            background-size: 200% 200%;
+            position: relative;
+            background-color: #0071E3;
             color: #FFFFFF;
             border: none;
             border-radius: 980px;
@@ -81,12 +91,22 @@
             font-size: 17px;
             font-weight: 400;
             cursor: pointer;
+            overflow: hidden;
             transition: transform 0.2s;
-            animation: gradientShift 3s ease infinite;
+        }
+        .item input[type="submit"]::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -100%;
+            width: 50%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: rotate(45deg);
+            animation: shine 3s ease infinite;
         }
         .item input[type="submit"]:hover {
             transform: scale(1.1);
-            animation: gradientShiftHover 3s ease infinite;
         }
         footer {
             background-color: #F5F5F7;
@@ -95,15 +115,10 @@
             color: #6E6E73;
             border-top: 1px solid #D2D2D7;
         }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes gradientShiftHover {
-            0% { background-position: 100% 50%; }
-            50% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 150%; }
+            100% { left: 150%; }
         }
     </style>
 </head>
