@@ -1,171 +1,268 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Pay Me</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store</title>
+    <style>
+        body {
+            font-family: "SF Pro Text", -apple-system, Helvetica, Arial, sans-serif;
+            background-color: #FFFFFF;
+            color: #1D1D1F;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #D2D2D7;
+        }
+        header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0;
+        }
+        .intro {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .intro p {
+            font-size: 17px;
+            color: #6E6E73;
+            line-height: 1.5;
+        }
+        .items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .item {
+            width: 200px;
+            text-align: center;
+        }
+        .item h2 {
+            font-size: 19px;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        .item input[type="submit"] {
+            background-color: #0071E3;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 980px;
+            padding: 10px 20px;
+            font-size: 17px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .item input[type="submit"]:hover {
+            background-color: #0077ED;
+        }
+        footer {
+            background-color: #F5F5F7;
+            padding: 20px 0;
+            font-size: 12px;
+            color: #6E6E73;
+            border-top: 1px solid #D2D2D7;
+        }
+    </style>
 </head>
 <body>
-    <h1>Buy My Stuff - Pay with Credit Card</h1>
-    <p>No refunds, no guarantees, pay at your own risk!</p>
-    <p>Get a unique one-time code after payment!</p>
+    <header>
+        <h1>Store</h1>
+    </header>
+    <div class="intro">
+        <p>Choose your item and pay securely with your credit card. A unique code will be provided upon purchase. No refunds, no guarantees—buy at your own risk.</p>
+    </div>
+    <div class="items">
+        <!-- Item 1: €20 -->
+        <div class="item">
+            <h2>Item 1 - €20</h2>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="passiethomaat@gmail.com">
+                <input type="hidden" name="item_name" value="Item 1">
+                <input type="hidden" name="amount" value="20.00">
+                <input type="hidden" name="currency_code" value="EUR">
+                <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
+                <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
+                <input type="hidden" name="no_shipping" value="1">
+                <input type="hidden" name="rm" value="2">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
+                <input type="submit" value="Buy Now">
+            </form>
+        </div>
 
-    <!-- Item 1: €20 -->
-    <h2>Item 1 - €20</h2>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="passiethomaat@gmail.com">
-        <input type="hidden" name="item_name" value="Item 1">
-        <input type="hidden" name="amount" value="20.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
-        <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
-        <input type="hidden" name="no_shipping" value="1">
-        <input type="hidden" name="rm" value="2">
-        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
-        <input type="submit" value="Pay €20 with Credit Card">
-    </form>
+        <!-- Item 2: €50 -->
+        <div class="item">
+            <h2>Item 2 - €50</h2>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="passiethomaat@gmail.com">
+                <input type="hidden" name="item_name" value="Item 2">
+                <input type="hidden" name="amount" value="50.00">
+                <input type="hidden" name="currency_code" value="EUR">
+                <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
+                <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
+                <input type="hidden" name="no_shipping" value="1">
+                <input type="hidden" name="rm" value="2">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
+                <input type="submit" value="Buy Now">
+            </form>
+        </div>
 
-    <!-- Item 2: €50 -->
-    <h2>Item 2 - €50</h2>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="passiethomaat@gmail.com">
-        <input type="hidden" name="item_name" value="Item 2">
-        <input type="hidden" name="amount" value="50.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
-        <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
-        <input type="hidden" name="no_shipping" value="1">
-        <input type="hidden" name="rm" value="2">
-        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
-        <input type="submit" value="Pay €50 with Credit Card">
-    </form>
+        <!-- Item 3: €75 -->
+        <div class="item">
+            <h2>Item 3 - €75</h2>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="passiethomaat@gmail.com">
+                <input type="hidden" name="item_name" value="Item 3">
+                <input type="hidden" name="amount" value="75.00">
+                <input type="hidden" name="currency_code" value="EUR">
+                <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
+                <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
+                <input type="hidden" name="no_shipping" value="1">
+                <input type="hidden" name="rm" value="2">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
+                <input type="submit" value="Buy Now">
+            </form>
+        </div>
 
-    <!-- Item 3: €75 -->
-    <h2>Item 3 - €75</h2>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="passiethomaat@gmail.com">
-        <input type="hidden" name="item_name" value="Item 3">
-        <input type="hidden" name="amount" value="75.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
-        <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
-        <input type="hidden" name="no_shipping" value="1">
-        <input type="hidden" name="rm" value="2">
-        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
-        <input type="submit" value="Pay €75 with Credit Card">
-    </form>
+        <!-- Item 4: €100 -->
+        <div class="item">
+            <h2>Item 4 - €100</h2>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="passiethomaat@gmail.com">
+                <input type="hidden" name="item_name" value="Item 4">
+                <input type="hidden" name="amount" value="100.00">
+                <input type="hidden" name="currency_code" value="EUR">
+                <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
+                <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
+                <input type="hidden" name="no_shipping" value="1">
+                <input type="hidden" name="rm" value="2">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
+                <input type="submit" value="Buy Now">
+            </form>
+        </div>
 
-    <!-- Item 4: €100 -->
-    <h2>Item 4 - €100</h2>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="passiethomaat@gmail.com">
-        <input type="hidden" name="item_name" value="Item 4">
-        <input type="hidden" name="amount" value="100.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
-        <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
-        <input type="hidden" name="no_shipping" value="1">
-        <input type="hidden" name="rm" value="2">
-        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
-        <input type="submit" value="Pay €100 with Credit Card">
-    </form>
+        <!-- Item 5: €150 -->
+        <div class="item">
+            <h2>Item 5 - €150</h2>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="passiethomaat@gmail.com">
+                <input type="hidden" name="item_name" value="Item 5">
+                <input type="hidden" name="amount" value="150.00">
+                <input type="hidden" name="currency_code" value="EUR">
+                <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
+                <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
+                <input type="hidden" name="no_shipping" value="1">
+                <input type="hidden" name="rm" value="2">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
+                <input type="submit" value="Buy Now">
+            </form>
+        </div>
 
-    <!-- Item 5: €150 -->
-    <h2>Item 5 - €150</h2>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="passiethomaat@gmail.com">
-        <input type="hidden" name="item_name" value="Item 5">
-        <input type="hidden" name="amount" value="150.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
-        <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
-        <input type="hidden" name="no_shipping" value="1">
-        <input type="hidden" name="rm" value="2">
-        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
-        <input type="submit" value="Pay €150 with Credit Card">
-    </form>
+        <!-- Item 6: €200 -->
+        <div class="item">
+            <h2>Item 6 - €200</h2>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="passiethomaat@gmail.com">
+                <input type="hidden" name="item_name" value="Item 6">
+                <input type="hidden" name="amount" value="200.00">
+                <input type="hidden" name="currency_code" value="EUR">
+                <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
+                <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
+                <input type="hidden" name="no_shipping" value="1">
+                <input type="hidden" name="rm" value="2">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
+                <input type="submit" value="Buy Now">
+            </form>
+        </div>
 
-    <!-- Item 6: €200 -->
-    <h2>Item 6 - €200</h2>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="passiethomaat@gmail.com">
-        <input type="hidden" name="item_name" value="Item 6">
-        <input type="hidden" name="amount" value="200.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
-        <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
-        <input type="hidden" name="no_shipping" value="1">
-        <input type="hidden" name="rm" value="2">
-        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
-        <input type="submit" value="Pay €200 with Credit Card">
-    </form>
+        <!-- Item 7: €250 -->
+        <div class="item">
+            <h2>Item 7 - €250</h2>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="passiethomaat@gmail.com">
+                <input type="hidden" name="item_name" value="Item 7">
+                <input type="hidden" name="amount" value="250.00">
+                <input type="hidden" name="currency_code" value="EUR">
+                <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
+                <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
+                <input type="hidden" name="no_shipping" value="1">
+                <input type="hidden" name="rm" value="2">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
+                <input type="submit" value="Buy Now">
+            </form>
+        </div>
 
-    <!-- Item 7: €250 -->
-    <h2>Item 7 - €250</h2>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="passiethomaat@gmail.com">
-        <input type="hidden" name="item_name" value="Item 7">
-        <input type="hidden" name="amount" value="250.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
-        <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
-        <input type="hidden" name="no_shipping" value="1">
-        <input type="hidden" name="rm" value="2">
-        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
-        <input type="submit" value="Pay €250 with Credit Card">
-    </form>
+        <!-- Item 8: €300 -->
+        <div class="item">
+            <h2>Item 8 - €300</h2>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="passiethomaat@gmail.com">
+                <input type="hidden" name="item_name" value="Item 8">
+                <input type="hidden" name="amount" value="300.00">
+                <input type="hidden" name="currency_code" value="EUR">
+                <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
+                <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
+                <input type="hidden" name="no_shipping" value="1">
+                <input type="hidden" name="rm" value="2">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
+                <input type="submit" value="Buy Now">
+            </form>
+        </div>
 
-    <!-- Item 8: €300 -->
-    <h2>Item 8 - €300</h2>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="passiethomaat@gmail.com">
-        <input type="hidden" name="item_name" value="Item 8">
-        <input type="hidden" name="amount" value="300.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
-        <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
-        <input type="hidden" name="no_shipping" value="1">
-        <input type="hidden" name="rm" value="2">
-        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
-        <input type="submit" value="Pay €300 with Credit Card">
-    </form>
+        <!-- Item 9: €350 -->
+        <div class="item">
+            <h2>Item 9 - €350</h2>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="passiethomaat@gmail.com">
+                <input type="hidden" name="item_name" value="Item 9">
+                <input type="hidden" name="amount" value="350.00">
+                <input type="hidden" name="currency_code" value="EUR">
+                <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
+                <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
+                <input type="hidden" name="no_shipping" value="1">
+                <input type="hidden" name="rm" value="2">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
+                <input type="submit" value="Buy Now">
+            </form>
+        </div>
 
-    <!-- Item 9: €350 -->
-    <h2>Item 9 - €350</h2>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="passiethomaat@gmail.com">
-        <input type="hidden" name="item_name" value="Item 9">
-        <input type="hidden" name="amount" value="350.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
-        <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
-        <input type="hidden" name="no_shipping" value="1">
-        <input type="hidden" name="rm" value="2">
-        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
-        <input type="submit" value="Pay €350 with Credit Card">
-    </form>
-
-    <!-- Item 10: €400 -->
-    <h2>Item 10 - €400</h2>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="passiethomaat@gmail.com">
-        <input type="hidden" name="item_name" value="Item 10">
-        <input type="hidden" name="amount" value="400.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
-        <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
-        <input type="hidden" name="no_shipping" value="1">
-        <input type="hidden" name="rm" value="2">
-        <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
-        <input type="submit" value="Pay €400 with Credit Card">
-    </form>
+        <!-- Item 10: €400 -->
+        <div class="item">
+            <h2>Item 10 - €400</h2>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="passiethomaat@gmail.com">
+                <input type="hidden" name="item_name" value="Item 10">
+                <input type="hidden" name="amount" value="400.00">
+                <input type="hidden" name="currency_code" value="EUR">
+                <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
+                <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
+                <input type="hidden" name="no_shipping" value="1">
+                <input type="hidden" name="rm" value="2">
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
+                <input type="submit" value="Buy Now">
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 BartelJaap. All rights reserved.</p>
+    </footer>
 </body>
 </html>
