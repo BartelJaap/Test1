@@ -1,1 +1,76 @@
-# Test1
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pay Me</title>
+</head>
+<body>
+    <h1>Buy My Stuff - Pay with Credit Card</h1>
+    <p>No refunds, no guarantees, pay at your own risk!</p>
+    <p>Get a unique one-time code after payment!</p>
+
+    <!-- Item 1: €20 -->
+    <h2>Item 1 - €20</h2>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="yourpaypalemail@example.com">
+        <input type="hidden" name="item_name" value="Item 1">
+        <input type="hidden" name="amount" value="20.00">
+        <input type="hidden" name="currency_code" value="EUR">
+        <input type="hidden" name="return" value="https://yourusername.github.io/your-repo/thanks.html">
+        <input type="hidden" name="cancel_return" value="https://yourusername.github.io/your-repo/cancel.html">
+        <input type="submit" value="Pay €20">
+    </form>
+
+    <!-- Item 2: €50 -->
+    <h2>Item 2 - €50</h2>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="yourpaypalemail@example.com">
+        <input type="hidden" name="item_name" value="Item 2">
+        <input type="hidden" name="amount" value="50.00">
+        <input type="hidden" name="currency_code" value="EUR">
+        <input type="hidden" name="return" value="https://yourusername.github.io/your-repo/thanks.html">
+        <input type="hidden" name="cancel_return" value="https://yourusername.github.io/your-repo/cancel.html">
+        <input type="submit" value="Pay €50">
+    </form>
+
+    <!-- Item 3: €100 -->
+    <h2>Item 3 - €100</h2>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="yourpaypalemail@example.com">
+        <input type="hidden" name="item_name" value="Item 3">
+        <input type="hidden" name="amount" value="100.00">
+        <input type="hidden" name="currency_code" value="EUR">
+        <input type="hidden" name="return" value="https://yourusername.github.io/your-repo/thanks.html">
+        <input type="hidden" name="cancel_return" value="https://yourusername.github.io/your-repo/cancel.html">
+        <input type="submit" value="Pay €100">
+    </form>
+
+    <!-- Item 4: €500 -->
+    <h2>Item 4 - €500</h2>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="yourpaypalemail@example.com">
+        <input type="hidden" name="item_name" value="Item 4">
+        <input type="hidden" name="amount" value="500.00">
+        <input type="hidden" name="currency_code" value="EUR">
+        <input type="hidden" name="return" value="https://yourusername.github.io/your-repo/thanks.html">
+        <input type="hidden" name="cancel_return" value="https://yourusername.github.io/your-repo/cancel.html">
+        <input type="submit" value="Pay €500">
+    </form>
+
+    <!-- Item 5: €1000 -->
+    <h2>Item 5 - €1000</h2>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="yourpaypalemail@example.com">
+        <input type="hidden" name="item_name" value="Item 5">
+        <input type="hidden" name="amount" value="1000.00">
+        <input type="hidden" name="currency_code" value="EUR">
+        <input type="hidden" name="return" value="https://yourusername.github.io/your-repo/thanks.html">
+        <input type="hidden" name="cancel_return" value="https://yourusername.github.io/your-repo/cancel.html">
+        <input type="submit" value="Pay €1000">
+    </form>
+</body>
+</html>
