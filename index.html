@@ -56,12 +56,19 @@
             left: -100%;
             width: 50%;
             height: 200%;
-            background: rgba(255, 255, 255, 0.5);
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0),
+                rgba(255, 255, 255, 0.7),
+                rgba(255, 255, 255, 0)
+            );
             transform: rotate(45deg);
-            animation: shine 3s ease infinite;
         }
         .intro-buttons a:hover {
             transform: scale(1.1);
+        }
+        .intro-buttons a:hover::after {
+            animation: shine 2s ease forwards;
         }
         .items {
             display: flex;
@@ -77,9 +84,34 @@
             text-align: center;
         }
         .item h2 {
+            position: relative;
             font-size: 19px;
             font-weight: 600;
             margin: 10px 0;
+            padding: 5px 10px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .item h2::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -100%;
+            width: 50%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0),
+                rgba(255, 255, 255, 0.7),
+                rgba(255, 255, 255, 0)
+            );
+            transform: rotate(45deg);
+        }
+        .item h2:hover {
+            transform: scale(1.1);
+        }
+        .item h2:hover::after {
+            animation: shine 2s ease forwards;
         }
         .item input[type="submit"] {
             position: relative;
@@ -101,12 +133,19 @@
             left: -100%;
             width: 50%;
             height: 200%;
-            background: rgba(255, 255, 255, 0.5);
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0),
+                rgba(255, 255, 255, 0.7),
+                rgba(255, 255, 255, 0)
+            );
             transform: rotate(45deg);
-            animation: shine 3s ease infinite;
         }
         .item input[type="submit"]:hover {
             transform: scale(1.1);
+        }
+        .item input[type="submit"]:hover::after {
+            animation: shine 2s ease forwards;
         }
         footer {
             background-color: #F5F5F7;
@@ -117,7 +156,6 @@
         }
         @keyframes shine {
             0% { left: -100%; }
-            20% { left: 150%; }
             100% { left: 150%; }
         }
     </style>
