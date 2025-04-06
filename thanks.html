@@ -1,1 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Successful</title>
+</head>
+<body>
+    <h1>Thank You!</h1>
+    <p>Your payment was successful.</p>
+    <p>Your unique one-time code is: <strong id="code"></strong></p>
+    <p>Use this code as needed. It’s unique to this payment!</p>
+    <script>
+        // Generate a unique code based on timestamp and random number
+        function generateCode() {
+            const timestamp = Date.now();
+            const randomNum = Math.floor(Math.random() * 10000);
+            return `PAY-${timestamp}-${randomNum}`;
+        }
 
+        // Display and store the code
+        const codeElement = document.getElementById("code");
+        const uniqueCode = generateCode();
+        codeElement.textContent = uniqueCode;
+        localStorage.setItem("lastPaymentCode", uniqueCode);
+    </script>
+</body>
+</html>
