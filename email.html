@@ -86,11 +86,12 @@
             <input type="hidden" name="item_name" id="itemName">
             <input type="hidden" name="amount" id="amount">
             <input type="hidden" name="currency_code" value="EUR">
-            <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html">
+            <input type="hidden" name="return" value="https://BartelJaap.github.io/payment-site/thanks.html" id="returnUrl">
             <input type="hidden" name="cancel_return" value="https://BartelJaap.github.io/payment-site/cancel.html">
             <input type="hidden" name="no_shipping" value="1">
             <input type="hidden" name="rm" value="2">
             <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
+            <input type="hidden" name="custom" id="customField">
         </form>
     </div>
     <footer>
@@ -107,6 +108,8 @@
         const emailInput = document.getElementById("paypalEmail");
         const continueButton = document.getElementById("continueButton");
         const paypalForm = document.getElementById("paypalForm");
+        const returnUrl = document.getElementById("returnUrl");
+        const customField = document.getElementById("customField");
 
         emailInput.addEventListener("input", () => {
             const email = emailInput.value.trim();
@@ -120,27 +123,33 @@
                     itemName: itemName,
                     amount: amount,
                     email: email,
-                    timestamp: new Date().toISOString()
+                    timestamp: new Date().toISOString(),
+                    status: "Pending"
                 };
 
-                // Replace with your actual Google Apps Script URL
-                const scriptUrl = "https://script.google.com/macros/s/AKfycbxIYcYCn7QzgcksSmCp4Pq7atrLKcjn6yeaH1XTlIft9KPOlTIKHOnRbLn_sOYoRdYl/exec";
+                const scriptUrl = "YOUR_GOOGLE_APPS_SCRIPT_URL"; // Replace with your URL
 
                 fetch(scriptUrl, {
                     method: "POST",
                     body: JSON.stringify(order),
                     headers: { "Content-Type": "application/json" },
-                    mode: "no-cors" // Use no-cors to avoid CORS issues on GitHub Pages
+                    mode: "no-cors"
                 })
-                .then(response => {
-                    // Since no-cors returns opaque response, we can't check response.text()
-                    console.log("Order sent to Google Sheet:", order);
-                    paypalForm.submit(); // Proceed to PayPal regardless of response
+                .then(() => {
+                    // Since no-cors prevents response reading, assume success and proceed
+                    console.log("Order logged as Pending:", order);
+                    // Pass row number via custom field (we'll approximate it client-side)
+                    const tempRowId = Date.now(); // Unique temp ID
+                    customField.value = tempRowId;
+                    returnUrl.value = `https://BartelJaap.github.io/payment-site/thanks.html?row=${tempRowId}`;
+                    paypalForm.submit();
                 })
                 .catch(error => {
-                    console.error("Fetch error:", error);
-                    alert("Error saving order: " + error.message + ". Proceeding to payment anyway.");
-                    paypalForm.submit(); // Proceed even if fetch fails
+                    console.error("Error logging order:", error);
+                    alert("Failed to log order, but proceeding: " + error.message);
+                    customField.value = Date.now();
+                    returnUrl.value = `https://BartelJaap.github.io/payment-site/thanks.html?row=${customField.value}`;
+                    paypalForm.submit();
                 });
             }
         });
