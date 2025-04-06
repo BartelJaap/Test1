@@ -123,21 +123,24 @@
                     timestamp: new Date().toISOString()
                 };
 
-                fetch("https://script.google.com/macros/s/AKfycbx1rHNO47vCCWy-Pr0iu640hlO0iQCmdXstkIXzG-fquEEgNLEjQUHsiuubygeOr7M/exec", {
+                // Replace with your actual Google Apps Script URL
+                const scriptUrl = "YOUR_GOOGLE_APPS_SCRIPT_URL";
+
+                fetch(scriptUrl, {
                     method: "POST",
                     body: JSON.stringify(order),
-                    headers: { "Content-Type": "application/json" }
+                    headers: { "Content-Type": "application/json" },
+                    mode: "no-cors" // Use no-cors to avoid CORS issues on GitHub Pages
                 })
-                .then(response => response.text())
-                .then(result => {
-                    if (result === "Success") {
-                        paypalForm.submit();
-                    } else {
-                        alert("Error saving order. Please try again.");
-                    }
+                .then(response => {
+                    // Since no-cors returns opaque response, we can't check response.text()
+                    console.log("Order sent to Google Sheet:", order);
+                    paypalForm.submit(); // Proceed to PayPal regardless of response
                 })
                 .catch(error => {
-                    alert("Error: " + error);
+                    console.error("Fetch error:", error);
+                    alert("Error saving order: " + error.message + ". Proceeding to payment anyway.");
+                    paypalForm.submit(); // Proceed even if fetch fails
                 });
             }
         });
