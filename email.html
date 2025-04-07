@@ -119,6 +119,9 @@
         continueButton.addEventListener("click", () => {
             const email = emailInput.value.trim();
             if (email && email.includes("@")) {
+                // Disable the button immediately to prevent multiple clicks
+            continueButton.disabled = true;
+            continueButton.textContent = "Processing..."; // Optional: Feedback to user
                 const order = {
                     itemName: itemName,
                     amount: amount,
