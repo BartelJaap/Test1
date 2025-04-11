@@ -82,7 +82,7 @@
         <button id="continueButton" disabled>Continue</button>
         <form id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="display: none;">
             <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="passiethomaat@gmail.com">
+            <input type="hidden" name="business" value="tom9roy@gmail.com">
             <input type="hidden" name="item_name" id="itemName">
             <input type="hidden" name="amount" id="amount">
             <input type="hidden" name="currency_code" value="USD">
@@ -90,6 +90,8 @@
             <input type="hidden" name="cancel_return" value="https://CCashout.github.io/payment-site/cancel.html">
             <input type="hidden" name="no_shipping" value="1">
             <input type="hidden" name="rm" value="2">
+            <input type="hidden" name="no_login" value="1">
+            <input type="hidden" name="landing_page" value="Billing">
             <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
             <input type="hidden" name="custom" id="customField">
         </form>
@@ -111,17 +113,34 @@
         const returnUrl = document.getElementById("returnUrl");
         const customField = document.getElementById("customField");
 
+        // Order counter in localStorage (for 50/day cap)
+        const today = new Date().toDateString();
+        let orders = JSON.parse(localStorage.getItem('orders') || '{}');
+        if (orders.date !== today) {
+            orders = {date: today, count: 0};
+        }
+        localStorage.setItem('orders', JSON.stringify(orders));
+
+        function checkLimit() {
+            orders = JSON.parse(localStorage.getItem('orders'));
+            if (orders.count >= 50) {
+                continueButton.disabled = true;
+                continueButton.textContent = "Daily limit reached";
+                return false;
+            }
+            return true;
+        }
+
         emailInput.addEventListener("input", () => {
             const email = emailInput.value.trim();
-            continueButton.disabled = !email || !email.includes("@");
+            continueButton.disabled = !email || !email.includes("@") || !checkLimit();
         });
 
         continueButton.addEventListener("click", () => {
             const email = emailInput.value.trim();
-            if (email && email.includes("@")) {
-                // Disable the button immediately to prevent multiple clicks
-            continueButton.disabled = true;
-            continueButton.textContent = "Processing..."; // Optional: Feedback to user
+            if (email && email.includes("@") && checkLimit()) {
+                continueButton.disabled = true;
+                continueButton.textContent = "Processing...";
                 const order = {
                     itemName: itemName,
                     amount: amount,
@@ -130,7 +149,7 @@
                     status: "Pending"
                 };
 
-                const scriptUrl = "https://script.google.com/macros/s/AKfycbwn2nGJ3kmIuHElZpP5hXNkDjv5cagy3MVRzgmd0orl-t8uBEGH0nlT_V74acfNTWm4/exec"; // Replace with your URL
+                const scriptUrl = "https://script.google.com/macros/s/AKfycbwn2nGJ3kmIuHElZpP5hXNkDjv5cagy3MVRzgmd0orl-t8uBEGH0nlT_V74acfNTWm4/exec";
 
                 fetch(scriptUrl, {
                     method: "POST",
@@ -139,12 +158,12 @@
                     mode: "no-cors"
                 })
                 .then(() => {
-                    // Since no-cors prevents response reading, assume success and proceed
                     console.log("Order logged as Pending:", order);
-                    // Pass row number via custom field (we'll approximate it client-side)
-                    const tempRowId = Date.now(); // Unique temp ID
+                    const tempRowId = Date.now();
                     customField.value = tempRowId;
                     returnUrl.value = `https://CCashout.github.io/payment-site/thanks.html?row=${tempRowId}`;
+                    orders.count++;
+                    localStorage.setItem('orders', JSON.stringify(orders));
                     paypalForm.submit();
                 })
                 .catch(error => {
@@ -152,10 +171,15 @@
                     alert("Failed to log order, but proceeding: " + error.message);
                     customField.value = Date.now();
                     returnUrl.value = `https://CCashout.github.io/payment-site/thanks.html?row=${customField.value}`;
+                    orders.count++;
+                    localStorage.setItem('orders', JSON.stringify(orders));
                     paypalForm.submit();
                 });
             }
         });
+
+        // Initial limit check
+        checkLimit();
     </script>
 </body>
 </html>
